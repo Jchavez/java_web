@@ -22,7 +22,7 @@ public class DAOUser implements InterfaceUser {
         List<Users> lista=null;
         try{
             session=HibernateUtil.getSessionFactory().openSession();
-            Query query=session.createQuery("from users");
+            Query query=session.createQuery("from Users");
             lista=(List<Users>) query.list();
         }
         catch(HibernateException e){
