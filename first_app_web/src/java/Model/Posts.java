@@ -10,12 +10,12 @@ import java.util.Date;
 public class Posts  implements java.io.Serializable {
 
 
-     private Integer id;
-     private int userId;
-     private String title;
-     private String body;
-     private Date created;
-     private Date modified;
+     Integer id;
+     int userId;
+     String title;
+     String body;
+     Date created;
+     Date modified;
 
     public Posts() {
     }

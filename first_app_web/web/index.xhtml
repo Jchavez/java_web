@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -14,12 +15,12 @@
                 <h:outputText value="Password" />
                 <h:inputSecret value="#{beanUsers.usuarioOBJ.password}"/>
             </h:panelGrid>
-            <p:commandButton value="Submit" actionListener="#{beanUsers.insertUser()}" update="show_users-ajax" />
+            <p:commandButton value="Submit" actionListener="#{beanUsers.insertUser()}" update=":ajax" />
         </h:form>
         
         
         
-        <h:form id="show_users-ajax">
+        <h:form id="ajax">
             <p:dataTable var="us" value="#{beanUsers.usuario}">
                 <p:column headerText="Id">
                 <h:outputText value="#{us.id}" />
@@ -32,11 +33,35 @@
                 <p:column headerText="Password">
                 <h:outputText value="#{us.password}" />
                 </p:column>
+                
+                <p:column headerText="Editar/Eliminar">
+                    <p:splitButton value="Opción" icon="ui-icon-disk">
+                        <p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" oncomplete="dlg.show()" update=":formModify">
+                            <f:setPropertyActionListener target="#{beanUsers.usuarioOBJ}" value="#{us}" />
+                        </p:menuitem>
+                        <p:menuitem value="Delete" icon="ui-icon-close" />
+                        <p:separator />                  
+                    </p:splitButton>
+                </p:column>
+                
+                
             </p:dataTable>
         </h:form>
 
+        <p:dialog header="Modify User" widgetVar="dlg" showEffect="explode" hideEffect="bounce">
+        <h:form id="formModify">
+            <h:panelGrid columns="2">
+                <h:outputText value="Username" />
+                <h:inputText value="#{beanUsers.usuarioOBJ.username}"/>
+                <h:outputText value="Password" />
+                <h:inputSecret value="#{beanUsers.usuarioOBJ.password}"/>
+            </h:panelGrid>
+            <p:commandButton value="Submit" actionListener="#{beanUsers.updateUser()}" update=":ajax" />
+        </h:form>
+        </p:dialog>
+        
 
-        </p:dataTable>
+
     </h:body>
 </html>
 

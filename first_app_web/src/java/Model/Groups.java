@@ -10,10 +10,10 @@ import java.util.Date;
 public class Groups  implements java.io.Serializable {
 
 
-     private Integer id;
-     private String name;
-     private Date created;
-     private Date modified;
+     Integer id;
+     String name;
+     Date created;
+     Date modified;
 
     public Groups() {
     }
