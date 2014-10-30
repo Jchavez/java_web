@@ -10,12 +10,12 @@ import java.util.Date;
 public class Users  implements java.io.Serializable {
 
 
-     private Integer id;
-     private String username;
-     private String password;
-     private int groupId;
-     private Date created;
-     private Date modified;
+     Integer id;
+     String username;
+     String password;
+     int groupId;
+     Date created;
+     Date modified;
 
     public Users() {
     }

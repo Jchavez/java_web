@@ -18,8 +18,9 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class beanUsers {
-public List<Users> usuario = new ArrayList<Users>();
+List<Users> usuario = new ArrayList<Users>();
 Users usuarioOBJ=new Users();
+
     /**
      * Creates a new instance of beanUsers
      */
@@ -35,6 +36,7 @@ Users usuarioOBJ=new Users();
     public void insertUser(){
         DAOUser usuarioDAO=new DAOUser();
         usuarioDAO.insertUser(usuarioOBJ);
+        
     }
     
     public void updateUser(){
@@ -46,7 +48,12 @@ Users usuarioOBJ=new Users();
         DAOUser usuarioDAO=new DAOUser();
         usuarioDAO.deleteUser(usuarioOBJ);
     }
-    
+
+    public Users getUsuarioOBJ() {
+        return usuarioOBJ;
+    }
+
+  
     
     
     

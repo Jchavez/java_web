@@ -7,18 +7,33 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:dataTable var="us" value="#{beanUsers.usuario}">
-        <p:column headerText="Id">
-        <h:outputText value="#{us.id}" />
-        </p:column>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputText value="Username" />
+                <h:inputText value="#{beanUsers.usuarioOBJ.username}"/>
+                <h:outputText value="Password" />
+                <h:inputSecret value="#{beanUsers.usuarioOBJ.password}"/>
+            </h:panelGrid>
+            <p:commandButton value="Submit" actionListener="#{beanUsers.insertUser()}" update="show_users-ajax" />
+        </h:form>
+        
+        
+        
+        <h:form id="show_users-ajax">
+            <p:dataTable var="us" value="#{beanUsers.usuario}">
+                <p:column headerText="Id">
+                <h:outputText value="#{us.id}" />
+                </p:column>
 
-        <p:column headerText="Username">
-        <h:outputText value="#{us.username}" />
-        </p:column>
+                <p:column headerText="Username">
+                <h:outputText value="#{us.username}" />
+                </p:column>
 
-        <p:column headerText="Password">
-        <h:outputText value="#{us.password}" />
-        </p:column>
+                <p:column headerText="Password">
+                <h:outputText value="#{us.password}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
 
 
         </p:dataTable>
